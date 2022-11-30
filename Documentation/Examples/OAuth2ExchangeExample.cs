@@ -42,7 +42,8 @@ namespace OAuth2ExchangeExample {
                 //"https://outlook.office.com/POP.AccessAsUser.All",  // Only needed for POP
                 //"https://outlook.office.com/SMTP.AccessAsUser.All", // Only needed for SMTP
             };
-
+			var cancellationToken = new CancellationToken();
+			
             var authToken = await publicClientApplication.AcquireTokenInteractive (scopes).WithLoginHint (ExchangeAccount).ExecuteAsync (cancellationToken);
             await publicClientApplication.AcquireTokenSilent (scopes, authToken.Account).ExecuteAsync (cancellationToken);
 
